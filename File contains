@@ -1,0 +1,41 @@
+#CVE      
+  
+
+#Qibosoft CMS V7：      
+#Remote file contains
+
+The vulnerability was discovered by downloading the program's source code to local and online deployment tests.      
+
+Location:        
+/member/index.php  
+
+Code：      
+$array=@include(ROOT_PATH."$rs[dirname]/member/menu.php");
+		foreach($array AS $key=>$value){
+			$value['link']="$webdb[www_url]/$rs[dirname]/member/".$value['link'];
+			$menudb["$rs[name]"][$key]=$value;     
+Rows:44          
+
+Harm：       
+Read arbitrary files,including /admin under the catalog files.
+
+Conditions for Execution：      
+Normal access can    
+
+Edition：     
+versions <= v7     
+
+Cause the cause ：           
+Key function:
+$menudb["$rs[name]"][$key]=$value;  
+File contains function existence variable,domain name able to control.    
+
+and
+
+/member/index.php lines:17
+Only made a simple protection mechanism,do not allow external URL loading.However, the files under this domain name can be loaded at will.
+
+POC :      
+http://domain/member/index.php?main=post.php?job=postnew    
+payload：
+http://domain/member/index.php?main=http://domain/hack/upgrade/data.sql
